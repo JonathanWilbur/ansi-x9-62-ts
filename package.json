@@ -36,9 +36,7 @@
         "test": "test"
     },
     "files": [
-        "dist/node/**/*",
-        "locales/**/*",
-        "schema/**/*"
+        "dist/**/*"
     ],
     "keywords": [
         "ansi",
@@ -62,7 +60,7 @@
         "test": "npx jest --ci --reporters=default --reporters=jest-junit --coverage"
     },
     "types": "./dist/node/index.d.ts",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "dependencies": {
         "asn1-ts": "^5.0.2"
     }
