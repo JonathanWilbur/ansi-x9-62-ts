@@ -1,5 +1,7 @@
 /* eslint-disable */
 import { FIELD_ID } from "../ANSI-X9-62/FIELD-ID.oca";
+import { FieldTypes_Union0_Intersection0_Element } from "./FieldTypes-Union0-Intersection0-Element.oa";
+import { FieldTypes_Union1_Intersection0_Element } from "./FieldTypes-Union1-Intersection0-Element.oa";
 export { characteristic_two_field } from "../ANSI-X9-62/characteristic-two-field.va";
 export {
     Characteristic_two,
@@ -13,8 +15,6 @@ export {
     _decode_Prime_p,
     _encode_Prime_p,
 } from "../ANSI-X9-62/Prime-p.ta";
-import { FieldTypes_Union0_Intersection0_Element } from "./FieldTypes-Union0-Intersection0-Element.oa";
-import { FieldTypes_Union1_Intersection0_Element } from "./FieldTypes-Union1-Intersection0-Element.oa";
 
 /* START_OF_SYMBOL_DEFINITION FieldTypes */
 /**

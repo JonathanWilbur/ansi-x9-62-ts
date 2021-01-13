@@ -8,6 +8,11 @@ import {
 import * as $ from "asn1-ts/dist/node/functional";
 import { Curve, _decode_Curve, _encode_Curve } from "../ANSI-X9-62/Curve.ta";
 import {
+    ECParameters_version,
+    _decode_ECParameters_version,
+    _encode_ECParameters_version,
+} from "../ANSI-X9-62/ECParameters-version.ta";
+import {
     ECPoint,
     _decode_ECPoint,
     _encode_ECPoint,
@@ -17,18 +22,15 @@ import {
     _decode_FieldID,
     _encode_FieldID,
 } from "../ANSI-X9-62/FieldID.ta";
-import {
-    HashAlgorithm,
-    _decode_HashAlgorithm,
-    _encode_HashAlgorithm,
-} from "../ANSI-X9-62/HashAlgorithm.ta";
-import {
-    SpecifiedECDomainVersion,
-    _decode_SpecifiedECDomainVersion,
-    _encode_SpecifiedECDomainVersion,
-} from "../ANSI-X9-62/SpecifiedECDomainVersion.ta";
 export { Curve, _decode_Curve, _encode_Curve } from "../ANSI-X9-62/Curve.ta";
 export {
+    ECParameters_version,
+    ECParameters_version_ecpVerl /* IMPORTED_LONG_NAMED_INTEGER */,
+    ecpVerl /* IMPORTED_SHORT_NAMED_INTEGER */,
+    _decode_ECParameters_version,
+    _encode_ECParameters_version,
+} from "../ANSI-X9-62/ECParameters-version.ta";
+export {
     ECPoint,
     _decode_ECPoint,
     _encode_ECPoint,
@@ -38,53 +40,36 @@ export {
     _decode_FieldID,
     _encode_FieldID,
 } from "../ANSI-X9-62/FieldID.ta";
-export {
-    HashAlgorithm,
-    _decode_HashAlgorithm,
-    _encode_HashAlgorithm,
-} from "../ANSI-X9-62/HashAlgorithm.ta";
-export {
-    ecdpVer1 /* IMPORTED_SHORT_NAMED_INTEGER */,
-    ecdpVer2 /* IMPORTED_SHORT_NAMED_INTEGER */,
-    ecdpVer3 /* IMPORTED_SHORT_NAMED_INTEGER */,
-    SpecifiedECDomainVersion,
-    SpecifiedECDomainVersion_ecdpVer1 /* IMPORTED_LONG_NAMED_INTEGER */,
-    SpecifiedECDomainVersion_ecdpVer2 /* IMPORTED_LONG_NAMED_INTEGER */,
-    SpecifiedECDomainVersion_ecdpVer3 /* IMPORTED_LONG_NAMED_INTEGER */,
-    _decode_SpecifiedECDomainVersion,
-    _encode_SpecifiedECDomainVersion,
-} from "../ANSI-X9-62/SpecifiedECDomainVersion.ta";
 
-/* START_OF_SYMBOL_DEFINITION SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION ECParameters */
 /**
- * @summary SpecifiedECDomain
+ * @summary ECParameters
  * @description
  *
  * ### ASN.1 Definition:
  *
  * ```asn1
- * SpecifiedECDomain ::= SEQUENCE {
- * version        SpecifiedECDomainVersion ( ecdpVer1 | ecdpVer2 | ecdpVer3 ),
- * fieldID        FieldID {{FieldTypes}},
- * curve        Curve,
- * base            ECPoint, -- Base point G
- * order        INTEGER, -- Order n of the base point
- * cofactor        INTEGER OPTIONAL, -- The integer h = #E(Fq)/n
- * hash            HashAlgorithm OPTIONAL,
- * ... -- Additional parameters may be added
+ * ECParameters ::= SEQUENCE { -- Elliptic curve parameters
+ *     version         INTEGER { ecpVerl(1) } (ecpVerl),
+ *     fieldID         FieldID {{FieldTypes}},
+ *     curve           Curve,
+ *     base            ECPoint, -- Base point G
+ *     order           INTEGER, -- Order n of the base point
+ *     cofactor        INTEGER OPTIONAL, -- The integer h = #E(Fq)/n
+ *     ...
  * }
  * ```
  *
  * @class
  */
-export class SpecifiedECDomain {
+export class ECParameters {
     constructor(
         /**
          * @summary `version`.
          * @public
          * @readonly
          */
-        readonly version: SpecifiedECDomainVersion,
+        readonly version: ECParameters_version,
         /**
          * @summary `fieldID`.
          * @public
@@ -116,12 +101,6 @@ export class SpecifiedECDomain {
          */
         readonly cofactor: OPTIONAL<INTEGER>,
         /**
-         * @summary `hash`.
-         * @public
-         * @readonly
-         */
-        readonly hash: OPTIONAL<HashAlgorithm>,
-        /**
          * @summary Extensions that are not recognized.
          * @public
          * @readonly
@@ -130,44 +109,43 @@ export class SpecifiedECDomain {
     ) {}
 
     /**
-     * @summary Restructures an object into a SpecifiedECDomain
+     * @summary Restructures an object into a ECParameters
      * @description
      *
-     * This takes an `object` and converts it to a `SpecifiedECDomain`.
+     * This takes an `object` and converts it to a `ECParameters`.
      *
      * @public
      * @static
      * @method
-     * @param {Object} _o An object having all of the keys and values of a `SpecifiedECDomain`.
-     * @returns {SpecifiedECDomain}
+     * @param {Object} _o An object having all of the keys and values of a `ECParameters`.
+     * @returns {ECParameters}
      */
     public static _from_object(
-        _o: { [_K in keyof SpecifiedECDomain]: SpecifiedECDomain[_K] }
-    ): SpecifiedECDomain {
-        return new SpecifiedECDomain(
+        _o: { [_K in keyof ECParameters]: ECParameters[_K] }
+    ): ECParameters {
+        return new ECParameters(
             _o.version,
             _o.fieldID,
             _o.curve,
             _o.base,
             _o.order,
             _o.cofactor,
-            _o.hash,
             _o._unrecognizedExtensionsList
         );
     }
 }
-/* END_OF_SYMBOL_DEFINITION SpecifiedECDomain */
+/* END_OF_SYMBOL_DEFINITION ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _root_component_type_list_1_spec_for_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _root_component_type_list_1_spec_for_ECParameters */
 /**
- * @summary The Leading Root Component Types of SpecifiedECDomain
+ * @summary The Leading Root Component Types of ECParameters
  * @description
  *
  * This is an array of `ComponentSpec`s that define how to decode the leading root component type list of a SET or SEQUENCE.
  *
  * @constant
  */
-export const _root_component_type_list_1_spec_for_SpecifiedECDomain: $.ComponentSpec[] = [
+export const _root_component_type_list_1_spec_for_ECParameters: $.ComponentSpec[] = [
     new $.ComponentSpec(
         "version",
         false,
@@ -210,70 +188,62 @@ export const _root_component_type_list_1_spec_for_SpecifiedECDomain: $.Component
         undefined,
         undefined
     ),
-    new $.ComponentSpec(
-        "hash",
-        true,
-        $.hasTag(_TagClass.universal, 16),
-        undefined,
-        undefined
-    ),
 ];
-/* END_OF_SYMBOL_DEFINITION _root_component_type_list_1_spec_for_SpecifiedECDomain */
+/* END_OF_SYMBOL_DEFINITION _root_component_type_list_1_spec_for_ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _root_component_type_list_2_spec_for_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _root_component_type_list_2_spec_for_ECParameters */
 /**
- * @summary The Trailing Root Component Types of SpecifiedECDomain
+ * @summary The Trailing Root Component Types of ECParameters
  * @description
  *
  * This is an array of `ComponentSpec`s that define how to decode the trailing root component type list of a SET or SEQUENCE.
  *
  * @constant
  */
-export const _root_component_type_list_2_spec_for_SpecifiedECDomain: $.ComponentSpec[] = [];
-/* END_OF_SYMBOL_DEFINITION _root_component_type_list_2_spec_for_SpecifiedECDomain */
+export const _root_component_type_list_2_spec_for_ECParameters: $.ComponentSpec[] = [];
+/* END_OF_SYMBOL_DEFINITION _root_component_type_list_2_spec_for_ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _extension_additions_list_spec_for_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _extension_additions_list_spec_for_ECParameters */
 /**
- * @summary The Extension Addition Component Types of SpecifiedECDomain
+ * @summary The Extension Addition Component Types of ECParameters
  * @description
  *
  * This is an array of `ComponentSpec`s that define how to decode the extension addition component type list of a SET or SEQUENCE.
  *
  * @constant
  */
-export const _extension_additions_list_spec_for_SpecifiedECDomain: $.ComponentSpec[] = [];
-/* END_OF_SYMBOL_DEFINITION _extension_additions_list_spec_for_SpecifiedECDomain */
+export const _extension_additions_list_spec_for_ECParameters: $.ComponentSpec[] = [];
+/* END_OF_SYMBOL_DEFINITION _extension_additions_list_spec_for_ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _cached_decoder_for_SpecifiedECDomain */
-let _cached_decoder_for_SpecifiedECDomain: $.ASN1Decoder<SpecifiedECDomain> | null = null;
-/* END_OF_SYMBOL_DEFINITION _cached_decoder_for_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _cached_decoder_for_ECParameters */
+let _cached_decoder_for_ECParameters: $.ASN1Decoder<ECParameters> | null = null;
+/* END_OF_SYMBOL_DEFINITION _cached_decoder_for_ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _decode_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _decode_ECParameters */
 /**
- * @summary Decodes an ASN.1 element into a(n) SpecifiedECDomain
+ * @summary Decodes an ASN.1 element into a(n) ECParameters
  * @function
  * @param {_Element} el The element being decoded.
- * @returns {SpecifiedECDomain} The decoded data structure.
+ * @returns {ECParameters} The decoded data structure.
  */
-export function _decode_SpecifiedECDomain(el: _Element) {
-    if (!_cached_decoder_for_SpecifiedECDomain) {
-        _cached_decoder_for_SpecifiedECDomain = function (
+export function _decode_ECParameters(el: _Element) {
+    if (!_cached_decoder_for_ECParameters) {
+        _cached_decoder_for_ECParameters = function (
             el: _Element
-        ): SpecifiedECDomain {
+        ): ECParameters {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            let version!: SpecifiedECDomainVersion;
+            let version!: ECParameters_version;
             let fieldID!: FieldID;
             let curve!: Curve;
             let base!: ECPoint;
             let order!: INTEGER;
             let cofactor: OPTIONAL<INTEGER>;
-            let hash: OPTIONAL<HashAlgorithm>;
             let _unrecognizedExtensionsList: _Element[] = [];
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
             const callbacks: $.DecodingMap = {
                 version: (_el: _Element): void => {
-                    version = _decode_SpecifiedECDomainVersion(_el);
+                    version = _decode_ECParameters_version(_el);
                 },
                 fieldID: (_el: _Element): void => {
                     fieldID = _decode_FieldID(_el);
@@ -290,63 +260,59 @@ export function _decode_SpecifiedECDomain(el: _Element) {
                 cofactor: (_el: _Element): void => {
                     cofactor = $._decodeInteger(_el);
                 },
-                hash: (_el: _Element): void => {
-                    hash = _decode_HashAlgorithm(_el);
-                },
             };
             /* END_OF_CALLBACKS_MAP */
             $._parse_sequence(
                 el,
                 callbacks,
-                _root_component_type_list_1_spec_for_SpecifiedECDomain,
-                _extension_additions_list_spec_for_SpecifiedECDomain,
-                _root_component_type_list_2_spec_for_SpecifiedECDomain,
+                _root_component_type_list_1_spec_for_ECParameters,
+                _extension_additions_list_spec_for_ECParameters,
+                _root_component_type_list_2_spec_for_ECParameters,
                 (ext: _Element): void => {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new SpecifiedECDomain(
+            return new ECParameters(
                 /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 fieldID,
                 curve,
                 base,
                 order,
                 cofactor,
-                hash,
                 _unrecognizedExtensionsList
             );
         };
     }
-    return _cached_decoder_for_SpecifiedECDomain(el);
+    return _cached_decoder_for_ECParameters(el);
 }
-/* END_OF_SYMBOL_DEFINITION _decode_SpecifiedECDomain */
+/* END_OF_SYMBOL_DEFINITION _decode_ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _cached_encoder_for_SpecifiedECDomain */
-let _cached_encoder_for_SpecifiedECDomain: $.ASN1Encoder<SpecifiedECDomain> | null = null;
-/* END_OF_SYMBOL_DEFINITION _cached_encoder_for_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _cached_encoder_for_ECParameters */
+let _cached_encoder_for_ECParameters: $.ASN1Encoder<ECParameters> | null = null;
+/* END_OF_SYMBOL_DEFINITION _cached_encoder_for_ECParameters */
 
-/* START_OF_SYMBOL_DEFINITION _encode_SpecifiedECDomain */
+/* START_OF_SYMBOL_DEFINITION _encode_ECParameters */
 /**
- * @summary Encodes a(n) SpecifiedECDomain into an ASN.1 Element.
+ * @summary Encodes a(n) ECParameters into an ASN.1 Element.
  * @function
  * @param {value} el The element being decoded.
  * @param elGetter A function that can be used to get new ASN.1 elements.
- * @returns {_Element} The SpecifiedECDomain, encoded as an ASN.1 Element.
+ * @returns {_Element} The ECParameters, encoded as an ASN.1 Element.
  */
-export function _encode_SpecifiedECDomain(
-    value: SpecifiedECDomain,
-    elGetter: $.ASN1Encoder<SpecifiedECDomain>
+export function _encode_ECParameters(
+    value: ECParameters,
+    elGetter: $.ASN1Encoder<ECParameters>
 ) {
-    if (!_cached_encoder_for_SpecifiedECDomain) {
-        _cached_encoder_for_SpecifiedECDomain = function (
-            value: SpecifiedECDomain,
-            elGetter: $.ASN1Encoder<SpecifiedECDomain>
+    if (!_cached_encoder_for_ECParameters) {
+        _cached_encoder_for_ECParameters = function (
+            value: ECParameters,
+            elGetter: $.ASN1Encoder<ECParameters>
         ): _Element {
             return $._encodeSequence(
                 ([] as (_Element | undefined)[])
                     .concat(
                         [
-                            /* REQUIRED   */ _encode_SpecifiedECDomainVersion(
+                            /* REQUIRED   */ _encode_ECParameters_version(
                                 value.version,
                                 $.BER
                             ),
@@ -363,9 +329,6 @@ export function _encode_SpecifiedECDomain(
                             /* IF_ABSENT  */ value.cofactor === undefined
                                 ? undefined
                                 : $._encodeInteger(value.cofactor, $.BER),
-                            /* IF_ABSENT  */ value.hash === undefined
-                                ? undefined
-                                : _encode_HashAlgorithm(value.hash, $.BER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -376,9 +339,9 @@ export function _encode_SpecifiedECDomain(
             );
         };
     }
-    return _cached_encoder_for_SpecifiedECDomain(value, elGetter);
+    return _cached_encoder_for_ECParameters(value, elGetter);
 }
 
-/* END_OF_SYMBOL_DEFINITION _encode_SpecifiedECDomain */
+/* END_OF_SYMBOL_DEFINITION _encode_ECParameters */
 
 /* eslint-enable */

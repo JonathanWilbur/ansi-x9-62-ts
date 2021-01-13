@@ -174,7 +174,7 @@ export function _decode_Curve(el: _Element) {
                 _root_component_type_list_2_spec_for_Curve,
                 undefined
             );
-            return new Curve /* SEQUENCE_CONSTRUCTOR_CALL */(a, b, seed);
+            return new Curve(/* SEQUENCE_CONSTRUCTOR_CALL */ a, b, seed);
         };
     }
     return _cached_decoder_for_Curve(el);

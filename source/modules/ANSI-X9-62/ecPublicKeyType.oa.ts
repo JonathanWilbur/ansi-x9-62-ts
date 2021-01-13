@@ -1,13 +1,13 @@
 /* eslint-disable */
 import { ALGORITHM } from "../ANSI-X9-62/ALGORITHM.oca";
 import { id_ecPublicKey } from "../ANSI-X9-62/id-ecPublicKey.va";
-export { ALGORITHM } from "../ANSI-X9-62/ALGORITHM.oca";
-export { id_ecPublicKey } from "../ANSI-X9-62/id-ecPublicKey.va";
 import {
     ECDomainParameters,
     _decode_ECDomainParameters,
     _encode_ECDomainParameters,
 } from "./ECDomainParameters.ta";
+export { ALGORITHM } from "../ANSI-X9-62/ALGORITHM.oca";
+export { id_ecPublicKey } from "../ANSI-X9-62/id-ecPublicKey.va";
 
 // ECDomainParameters used to be DomainParameters. I think this is a mistake.
 

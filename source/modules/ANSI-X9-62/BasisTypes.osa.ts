@@ -1,5 +1,8 @@
 /* eslint-disable */
 import { CHARACTERISTIC_TWO } from "../ANSI-X9-62/CHARACTERISTIC-TWO.oca";
+import { BasisTypes_Union0_Intersection0_Element } from "./BasisTypes-Union0-Intersection0-Element.oa";
+import { BasisTypes_Union1_Intersection0_Element } from "./BasisTypes-Union1-Intersection0-Element.oa";
+import { BasisTypes_Union2_Intersection0_Element } from "./BasisTypes-Union2-Intersection0-Element.oa";
 export { CHARACTERISTIC_TWO } from "../ANSI-X9-62/CHARACTERISTIC-TWO.oca";
 export { gnBasis } from "../ANSI-X9-62/gnBasis.va";
 export {
@@ -14,9 +17,6 @@ export {
     _decode_Trinomial,
     _encode_Trinomial,
 } from "../ANSI-X9-62/Trinomial.ta";
-import { BasisTypes_Union0_Intersection0_Element } from "./BasisTypes-Union0-Intersection0-Element.oa";
-import { BasisTypes_Union1_Intersection0_Element } from "./BasisTypes-Union1-Intersection0-Element.oa";
-import { BasisTypes_Union2_Intersection0_Element } from "./BasisTypes-Union2-Intersection0-Element.oa";
 
 /* START_OF_SYMBOL_DEFINITION BasisTypes */
 /**
