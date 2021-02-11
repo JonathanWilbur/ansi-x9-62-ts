@@ -11,27 +11,27 @@
     ],
     "description": "ANSI X6.92 ASN.1 Data Structures",
     "devDependencies": {
-        "@babel/core": "^7.12.10",
-        "@babel/preset-env": "^7.12.11",
-        "@babel/preset-typescript": "^7.12.7",
+        "@babel/core": "^7.12.13",
+        "@babel/preset-env": "^7.12.13",
+        "@babel/preset-typescript": "^7.12.13",
         "@types/benchmark": "^2.1.0",
         "@types/i18next-fs-backend": "^1.0.0",
-        "@types/node": "^14.14.20",
-        "@typescript-eslint/eslint-plugin": "^4.13.0",
-        "@typescript-eslint/parser": "^4.13.0",
+        "@types/node": "^14.14.25",
+        "@typescript-eslint/eslint-plugin": "^4.15.0",
+        "@typescript-eslint/parser": "^4.15.0",
         "babel-jest": "^26.6.3",
         "benchmark": "^2.1.4",
-        "eslint": "^7.17.0",
+        "eslint": "^7.19.0",
         "jest": "^26.6.3",
         "jest-junit": "^12.0.0",
         "madge": "^4.0.0",
-        "npm-check-updates": "^10.2.5",
+        "npm-check-updates": "^11.1.1",
         "prettier": "2.2.1",
         "prettier-plugin-organize-imports": "^1.1.1",
         "sloc": "^0.2.1",
-        "ts-loader": "^8.0.14",
-        "typedoc": "^0.20.14",
-        "typescript": "^4.1.3"
+        "ts-loader": "^8.0.17",
+        "typedoc": "^0.20.24",
+        "typescript": "^4.1.5"
     },
     "directories": {
         "doc": "documentation",
@@ -62,9 +62,9 @@
         "test": "npx jest --ci --reporters=default --reporters=jest-junit --coverage"
     },
     "types": "./dist/node/index.d.ts",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "dependencies": {
-        "asn1-ts": "^5.0.2",
-        "x500-ts": "^3.2.2"
+        "asn1-ts": "^5.0.3",
+        "x500-ts": "^3.2.6"
     }
 }
